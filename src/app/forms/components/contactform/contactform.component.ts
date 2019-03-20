@@ -19,4 +19,8 @@ export class ContactFormComponent implements OnInit {
       'shouldAddToNewsletter': new FormControl(false)
     });
   }
+
+  onSubmit() {
+    this.contactForm.reset();
+  }
 }

@@ -1,11 +1,15 @@
-<form [formGroup]="contactForm">
+<form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
   <div class="form-group">
     <label for="name">Name</label>
-    <input id="name" type="text" class="form-control" formControlName="name">
+    <input
+      id="name"
+      type="text"
+      class="form-control"
+      formControlName="name">
     <span
       *ngIf="!contactForm.get('name').valid && contactForm.get('name').touched"
       class="help-block">
-             <span *ngIf="contactForm.get('name').errors['required']">This field is required!</span>
+        <span *ngIf="contactForm.get('name').errors['required']">This field is required!</span>
     </span>
   </div>
   <div class="form-group">
@@ -14,10 +18,9 @@
     <span
       *ngIf="!contactForm.get('email').valid && contactForm.get('email').touched"
       class="help-block">
-             <span
-               *ngIf="contactForm.get('email').errors['required']; then requiredEmailBlock else invalidEmailBlock"></span>
-            <ng-template #requiredEmailBlock>This field is required!</ng-template>
-            <ng-template #invalidEmailBlock>Please enter a valid email!</ng-template>
+      <span *ngIf="contactForm.get('email').errors['required']; then requiredEmailBlock else invalidEmailBlock"></span>
+      <ng-template #requiredEmailBlock>This field is required!</ng-template>
+      <ng-template #invalidEmailBlock>Please enter a valid email!</ng-template>
     </span>
   </div>
   <div class="form-group">
@@ -31,13 +34,18 @@
     ></textarea>
     <span
       *ngIf="!contactForm.get('message').valid && contactForm.get('message').touched"
-      class="help-block">This field is required!
+      class="help-block">
+      This field is required!
     </span>
   </div>
   <div class="form-check">
-    <input id="shouldAddToNewsletter" type="checkbox" name="shouldAddToNewsletter" class="form-check-input"
-           formControlName="shouldAddToNewsletter">
+    <input
+      id="shouldAddToNewsletter"
+      type="checkbox"
+      name="shouldAddToNewsletter"
+      class="form-check-input"
+      formControlName="shouldAddToNewsletter">
     <label for="shouldAddToNewsletter">Would you like to subscribe to our newsletter?</label>
   </div>
-  <button class="btn btn-primary" type="submit">Submit</button>
+  <button class="btn btn-primary" type="submit" [disabled]="!contactForm.valid">Submit</button>
 </form>
