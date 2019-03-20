@@ -8,6 +8,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 })
 export class ContactFormComponent implements OnInit {
   contactForm: FormGroup;
+  private submitSuccess: boolean;
 
   constructor() { }
 
@@ -20,7 +21,19 @@ export class ContactFormComponent implements OnInit {
     });
   }
 
+  validateFields() {
+    Object.keys(this.contactForm.controls).forEach(field => {
+      const control = this.contactForm.get(field);
+      control.markAsTouched({ onlySelf: true });
+    });
+  }
+
   onSubmit() {
-    this.contactForm.reset();
+    if (this.contactForm.valid) {
+      this.contactForm.reset();
+      this.submitSuccess = true;
+    } else {
+      this.validateFields();
+    }
   }
 }
