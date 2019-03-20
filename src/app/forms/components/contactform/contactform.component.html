@@ -1,28 +1,39 @@
-
-      <form>
-        <div class="form-group">
-          <label for="name">Username</label>
-          <input id="name" type="text" class="form-control">
-        </div>
-        <div class="form-group">
-          <label for="email">Email</label>
-          <input id="email" type="text" class="form-control">
-        </div>
-        <div class="form-group">
-          <label for="message">Email</label>
-          <textarea
-            id="message"
-            name="message"
-            rows="3"
-            class="form-control"
-          ></textarea>
-        </div>
-
-        <div class="form-check">
-          <input id="shouldAddToNewsletter" type="checkbox" name="shouldAddToNewsletter" class="form-check-input">
-          <label for="shouldAddToNewsletter">Would you like to subscribe to our newsletter?</label>
-        </div>
-
-        <button class="btn btn-primary" type="submit">Submit</button>
-
-      </form>
+<form [formGroup]="contactForm">
+  <div class="form-group">
+    <label for="name">Name</label>
+    <input id="name" type="text" class="form-control" formControlName="name">
+    <span
+      *ngIf="!contactForm.get('name').valid && contactForm.get('name').touched"
+      class="help-block">
+             <span *ngIf="contactForm.get('name').errors['required']">This field is required!</span>
+    </span>
+  </div>
+  <div class="form-group">
+    <label for="email">Email</label>
+    <input id="email" type="text" class="form-control" formControlName="email">
+    <span
+      *ngIf="!contactForm.get('email').valid && contactForm.get('email').touched"
+      class="help-block">
+             <span
+               *ngIf="contactForm.get('email').errors['required']; then requiredEmailBlock else invalidEmailBlock"></span>
+            <ng-template #requiredEmailBlock>This field is required!</ng-template>
+            <ng-template #invalidEmailBlock>Please enter a valid email!</ng-template>
+    </span>
+  </div>
+  <div class="form-group">
+    <label for="message">Message</label>
+    <textarea
+      id="message"
+      name="message"
+      rows="3"
+      class="form-control"
+      formControlName="message"
+    ></textarea>
+  </div>
+  <div class="form-check">
+    <input id="shouldAddToNewsletter" type="checkbox" name="shouldAddToNewsletter" class="form-check-input"
+           formControlName="shouldAddToNewsletter">
+    <label for="shouldAddToNewsletter">Would you like to subscribe to our newsletter?</label>
+  </div>
+  <button class="btn btn-primary" type="submit">Submit</button>
+</form>
