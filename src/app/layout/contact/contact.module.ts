@@ -7,6 +7,7 @@ import { RecaptchaFormsModule } from 'ng-recaptcha/forms';
 
 import { ContactComponent } from './contact.component';
 import { ContactRoutingModule } from './contact-routing.module';
+import { ContactFormComponent } from '../../forms/components';
 
 @NgModule({
   imports: [
@@ -16,10 +17,11 @@ import { ContactRoutingModule } from './contact-routing.module';
     ReactiveFormsModule,
     ContactRoutingModule,
     RecaptchaModule,
-    RecaptchaFormsModule,
+    RecaptchaFormsModule
   ],
   declarations: [
-    ContactComponent
+    ContactComponent,
+    ContactFormComponent
   ],
   providers: []
 })
