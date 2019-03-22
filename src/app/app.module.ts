@@ -11,6 +11,20 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 
 import { HeaderComponent } from './shared';
+import { AngularFirestore, AngularFirestoreModule } from 'angularfire2/firestore';
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireAuthModule } from 'angularfire2/auth';
+import { AngularFireStorageModule } from 'angularfire2/storage';
+
+const firebase = {
+  apiKey: 'AIzaSyAGm_B9ob81NpFbTLdqCSe3BqArppl2Hw8',
+  authDomain: 'angularchallenge.firebaseapp.com',
+  databaseURL: 'https://angularchallenge.firebaseio.com',
+  projectId: 'angularchallenge',
+  storageBucket: 'angularchallenge.appspot.com',
+  messagingSenderId: '831557197585'
+};
+
 
 @NgModule({
   declarations: [
@@ -22,10 +36,16 @@ import { HeaderComponent } from './shared';
     BrowserAnimationsModule,
     FormsModule,
     AppRoutingModule,
+    AngularFireModule.initializeApp(firebase),
+    AngularFirestoreModule,
+    AngularFireAuthModule,
+    AngularFireStorageModule,
     HttpClientModule,
     HttpModule,
-    NgbModule.forRoot()
+    NgbModule.forRoot(),
+
   ],
+  providers: [AngularFirestore],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

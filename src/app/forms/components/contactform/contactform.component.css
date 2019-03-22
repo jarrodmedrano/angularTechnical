@@ -6,6 +6,14 @@ input.ng-invalid.ng-touched, textarea.ng-invalid.ng-touched {
   color: red;
 }
 
+.centered {
+  text-align: center;
+}
+
+.centered .control-label {
+  text-align: left;
+}
+
 .form-group.required .control-label:after {
   content: " * ";
   color: red;

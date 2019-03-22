@@ -1,4 +1,5 @@
-<div *ngIf="!submitSuccess else successMessage">
+<div class="justify-content-center" *ngIf="!submitSuccess else successMessage">
+  <h1>Contact Us</h1>
   <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
   <div class="form-group required">
     <label class="control-label" for="name">Name</label>
@@ -48,7 +49,12 @@
       formControlName="shouldAddToNewsletter">
     <label for="shouldAddToNewsletter">Would you like to subscribe to our newsletter?</label>
   </div>
-  <button class="btn btn-primary" type="submit">Submit</button>
+  <button class="btn btn-primary mt-3" type="submit">Submit</button>
 </form>
 </div>
-<ng-template #successMessage><div class="alert alert-success" role="alert">We've recieved your submission!</div></ng-template>
+<ng-template #successMessage>
+  <h2>Thank You Very Much!</h2>
+  <div class="alert alert-success" role="alert">We've received your submission!</div>
+
+  <button class="btn btn-primary mt-3" (click)="onReset()">&laquo; Go Back</button>
+</ng-template>

@@ -1,16 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { SendMailService } from '../../../services/send-mail.service';
 
 @Component({
   selector: 'app-contactform',
   templateUrl: './contactform.component.html',
-  styleUrls: ['./contactform.component.css']
+  styleUrls: ['./contactform.component.css'],
+  providers: [SendMailService]
 })
 export class ContactFormComponent implements OnInit {
   contactForm: FormGroup;
   private submitSuccess: boolean;
 
-  constructor() { }
+  constructor(private sendMailService: SendMailService) { }
 
   ngOnInit() {
     this.contactForm = new FormGroup( {
@@ -30,10 +32,15 @@ export class ContactFormComponent implements OnInit {
 
   onSubmit() {
     if (this.contactForm.valid) {
-      this.contactForm.reset();
       this.submitSuccess = true;
+      this.sendMailService.submitHandler(this.contactForm.value);
     } else {
       this.validateFields();
     }
+  }
+
+  onReset() {
+    this.contactForm.reset();
+    this.submitSuccess = false;
   }
 }

@@ -1,22 +1,22 @@
 import { Injectable } from '@angular/core';
-import * as SendGrid from '@sendgrid/mail';
+import { AngularFirestore } from 'angularfire2/firestore';
 
 @Injectable()
 export class SendMailService {
+  loading = false;
+  success = false;
 
-  constructor() {}
-
-  logFormSubmission(submitted: {name: string, email: string, message: string, shouldAddToNewsletter: boolean}) {
-    const {name, email, message, shouldAddToNewsletter} = submitted;
-    const date = Date();
-    const html = `
-      <div>From: ${name}</div>
-      <div>Email: <a href="mailto:${email}">${email}</a></div>
-      <div>Date: ${date}</div>
-      <div>Message: ${message}</div>
-      <div>Should Add to Newsletter: ${shouldAddToNewsletter}</div>
-    `;
-    console.log(html);
+  constructor(private afs: AngularFirestore) {
   }
 
+  async submitHandler(submitted: {name: string, email: string, message: string, shouldAddToNewsletter: boolean}) {
+    try {
+      await this.afs.collection('contacts').add(submitted);
+      this.success = true;
+    } catch (err) {
+      console.error(err);
+    }
+
+    this.loading = false;
+  }
 }
