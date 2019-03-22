@@ -37,6 +37,10 @@
   overflow: hidden;
 }
 
+.text-fill img {
+  width: 100%;
+}
+
 .text-fill::before {
   content: '';
   width: 100vw;
