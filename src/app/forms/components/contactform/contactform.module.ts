@@ -4,6 +4,7 @@ import { RecaptchaModule } from 'ng-recaptcha';
 import { RecaptchaFormsModule } from 'ng-recaptcha/forms';
 import { ContactFormComponent } from './contactform.component';
 import { FieldErrorComponent } from '..';
+import { TextFieldComponent } from '../text-field/text-field.component';
 
 @NgModule({
   imports: [
@@ -11,7 +12,8 @@ import { FieldErrorComponent } from '..';
     ReactiveFormsModule,
     RecaptchaModule,
     RecaptchaFormsModule,
-    FieldErrorComponent
+    FieldErrorComponent,
+    TextFieldComponent
   ],
   declarations: [
     ContactFormComponent
