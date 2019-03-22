@@ -14,4 +14,11 @@ html, body {
 
 .notfound .content.fill {
   position: relative;
+  width: 100%;
+}
+
+@media screen and (max-width: 992px) {
+  .notfound .content.fill {
+    padding: 0 0;
+  }
 }
