@@ -10,7 +10,7 @@ import { SendMailService } from '../../../services/send-mail.service';
 })
 export class ContactFormComponent implements OnInit {
   contactForm: FormGroup;
-  private submitSuccess: boolean;
+  submitSuccess: boolean;
 
   constructor(private sendMailService: SendMailService) { }
 
