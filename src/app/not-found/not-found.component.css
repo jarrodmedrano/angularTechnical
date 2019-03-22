@@ -37,6 +37,28 @@
   overflow: hidden;
 }
 
+.text-fill::before {
+  content: '';
+  width: 100vw;
+  height: 20px;
+  position: absolute;
+  background: black;
+  display: block;
+  left: 0;
+  top: 0;
+}
+
+.text-fill::after {
+  content: '';
+  width: 100vw;
+  height: 20px;
+  position: absolute;
+  background: white;
+  display: block;
+  left: 0;
+  bottom: 0;
+}
+
 .video {
   position: absolute;
   left: 0;
