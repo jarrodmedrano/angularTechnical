@@ -16,7 +16,9 @@ import { TextFieldComponent } from '../text-field/text-field.component';
     TextFieldComponent
   ],
   declarations: [
-    ContactFormComponent
+    ContactFormComponent,
+    FieldErrorComponent,
+    TextFieldComponent
   ],
   providers: []
 })
