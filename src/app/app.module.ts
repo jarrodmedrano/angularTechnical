@@ -29,7 +29,7 @@ const firebase = {
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent
+    HeaderComponent,
   ],
   imports: [
     BrowserModule,
@@ -43,7 +43,6 @@ const firebase = {
     HttpClientModule,
     HttpModule,
     NgbModule.forRoot(),
-
   ],
   providers: [AngularFirestore],
   bootstrap: [AppComponent]
