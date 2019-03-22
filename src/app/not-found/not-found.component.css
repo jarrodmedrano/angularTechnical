@@ -3,7 +3,7 @@
 }
 
 .text {
-  font-family: 'EmojiOne', 'Arial Black', serif;
+  font-family: 'Arial Black', 'Helvetica', sans-serif;
   font-size: 20em;
 }
 
@@ -36,13 +36,14 @@
   bottom: 0;
   left: 0;
   margin: auto;
-  overflow: hidden; }
+  overflow: hidden;
+}
 
 .video {
   position: absolute;
   left: 0;
   bottom: 0;
-  width: 100%;
+  width: 100vw;
 }
 
 .svg-defs {
@@ -60,7 +61,7 @@
 .wrap {
   width: 50%;
   position: relative;
-  font: 800 14.5em/1 Open Sans, Impact;
+  font: 800 14.5em/1 'Arial Black', 'Helvetica', sans-serif;
   text-transform: uppercase;
   margin: 0 auto;
   text-align: left;
