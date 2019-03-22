@@ -8,22 +8,12 @@
       type="text"
       class="form-control"
       formControlName="name">
-    <span
-      *ngIf="!contactForm.get('name').valid && contactForm.get('name').touched"
-      class="help-block">
-        <span *ngIf="contactForm.get('name').errors['required']">This field is required!</span>
-    </span>
+    <app-field-error [displayError]="isFieldValid('name')" errorMsg="Your name is required!"></app-field-error>
   </div>
   <div class="form-group required">
     <label class="control-label" for="email">Email</label>
     <input id="email" type="text" class="form-control" formControlName="email">
-    <span
-      *ngIf="!contactForm.get('email').valid && contactForm.get('email').touched"
-      class="help-block">
-      <span *ngIf="contactForm.get('email').errors['required']; then requiredEmailBlock else invalidEmailBlock"></span>
-      <ng-template #requiredEmailBlock>This field is required!</ng-template>
-      <ng-template #invalidEmailBlock>Please enter a valid email!</ng-template>
-    </span>
+    <app-field-error [displayError]="isFieldValid('email')" errorMsg="Please enter a valid email!"></app-field-error>
   </div>
   <div class="form-group required">
     <label class="control-label" for="message">Message</label>
@@ -34,11 +24,7 @@
       class="form-control"
       formControlName="message"
     ></textarea>
-    <span
-      *ngIf="!contactForm.get('message').valid && contactForm.get('message').touched"
-      class="help-block">
-      This field is required!
-    </span>
+    <app-field-error [displayError]="isFieldValid('message')" errorMsg="Please enter a message!"></app-field-error>
   </div>
   <div class="form-check">
     <input
@@ -55,6 +41,5 @@
 <ng-template #successMessage>
   <h2>Thank You Very Much!</h2>
   <div class="alert alert-success" role="alert">We've received your submission!</div>
-
   <button class="btn btn-primary mt-3" (click)="onReset()">&laquo; Go Back</button>
 </ng-template>

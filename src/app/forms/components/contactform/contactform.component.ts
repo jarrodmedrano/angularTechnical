@@ -23,6 +23,10 @@ export class ContactFormComponent implements OnInit {
     });
   }
 
+  isFieldValid(field: string) {
+    return !this.contactForm.get(field).valid && this.contactForm.get(field).touched;
+  }
+
   validateFields() {
     Object.keys(this.contactForm.controls).forEach(field => {
       const control = this.contactForm.get(field);
